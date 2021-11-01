@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>functions pset</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+/*
+Problem Set (Pset) Unit 3:
+The entirety of this code should be run on the console.
+The goal is for you to practice
+*/
+
+console.log("Problem 1-------------------------")
+function squirrelPlay(temp, isSummer){
+    //squirrels tend to hang out outside rummaging for food under certain weather
+    //if it's 60~90 degrees F, they're outside playing
+    //unless it's summer then they'll be outside from 60~100 F
+    //return a boolean value of whether the squirrel is playing outside
+
+    return (isSummer && (60 <= temp <= 100)) || (!isSummer && (60 <= temp <= 90))
+}
+console.log(squirrelPlay(80, true));
+
+
+
+console.log("Problem 2-------------------------------")
+function schrodinger(boxOpen){
+    //function describes whether a cat inside schrodinger's box is alive or dead
+    //boxOpen is a boolean that the user passes in
+    //if boxOpen is true, there is a 50% chance that the cat is alive, 50% dead.
+    //if boxOpen is false, the cat is considered both alive and dead.
+    //return a string saying "cat is alive!" if the cat is alive. If dead, "cat is dead :( ", etc.
+
+    return !boxOpen ? "cat is alive and dead!" : 
+        Math.random() < 0.5 ? "cat is alive!" : "cat is dead :("
+}
+console.log(schrodinger(true)); //should print dead or alive depends.
+console.log(schrodinger(false)); //should print "cat is alive and dead!"
+
+
+
+console.log("Problem 3-------------------------------")
+function speeding(speedLim, avgSpeed, distance){
+    //speeding can be dangerous and may not be as efficient as you anticipate.
+    //calculate the difference how much time you save by speeding vs going the speed limit
+    //answer should be given in minutes
+
+    return ((distance / speedLim * 60) - (distance / avgSpeed * 60)).toFixed(1) + " mins"
+}
+console.log(speeding(80, 90, 40)) //should return 3.3 minutes
+console.log(speeding(80, 90, 4000)) //should return 333.3
+
+
+
+console.log("Problem 4-------------------------------")
+function halfLifeCalc(mass, halfLife, timeElapsed){
+    //nuclear waste decays in a first order decay function.
+    //for example, if you have a 100 grams and the half life is 2 years,
+    //after 8 years, 3 half lives have gone by. That means you'd have 100 --> 50 --> 25 --> 12.5 g left
+    //create a function that can calculate how much mass
+    // of nuclear waste is left given the starting mass, half life, and time elapsed.
+
+    return mass * (0.5 ** (timeElapsed / halfLife)) + "g"
+}
+console.log(halfLifeCalc(200,4,20)) //should print 6.25g
+console.log(halfLifeCalc(100,35,175)) //should print 3.125
+
+
+
+console.log("Problem 5-------------------------------")
+function daltonPartialPressure(partialPressures){
+    //dalton's law of partial pressures state that the total pressure of a chamber
+    //is simply the sum of the individual pressures of the gases in the chamber.
+    //for example, if the partial pressures are [1, 9, 8.4, 2] then the
+    //total pressure would be 20.4 atm .
+    //create a function that can calculate and return the total pressure given
+    //a list of partial pressures.
+
+    const summation = function(previousValue, currentValue) {
+        if (previousValue < 0 || currentValue < 0)
+            throw "Cannot have negative pressure"
+        return previousValue + currentValue
+    }
+    return partialPressures.reduce(summation)
+}
+console.log(daltonPartialPressure([1,2,3,4])) //should show 10 atm
+console.log(daltonPartialPressure([3,4,10]))//should return 17
+console.log(daltonPartialPressure([-1,2,9]))//should return "error", you can't have a negative pressure
+
+
+    </script>
+  </body>
+</html>
