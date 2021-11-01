@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+        console.log("Problem 1a-------------")
+        //prints to the console each cereal from the array
+        var cerealArray = ["cheerios", "corn flakes", "fruit loops", "chex"]
+        const cereal = (arr) => { 
+            arr.forEach((ele, i) => { console.log(ele) })
+        }
+        cereal(cerealArray) //cheerios, corn flakes, fruit loops, chex
+
+
+        console.log("Problem 1b------------")
+        // prints 2nd to last element
+        const penultimate = (arr) => { return arr[arr.length - 2] }
+        console.log(penultimate(cerealArray)) // fruit loops
+
+        console.log("Problem 2-------------")
+        //returns the array element at said index
+        const cerealIndex = (arr, i) => { return arr[i] }
+        console.log(cerealIndex(cerealArray, 2)) // fruit loops
+
+        console.log("Problem 3-------------")
+        /*create a function that adds 1
+        to each element of the array, returns array*/
+        var numArray = [0,1,2,3,4,5]
+        const add1 = (arr) => {
+            arr.forEach((ele, i) => { arr[i] = ele + 1 })
+            return arr
+        }
+        console.log(add1(numArray)) // 1,2,3,4,5,6
+
+        console.log("Problem 4-------------")
+        /*create a function that adds "islands"
+        to each element of the array, returns array*/
+        const addIsland = (arr) => {
+            arr.forEach((ele, i) => { arr[i] = ele + " islands" })
+            return arr
+        }
+        var islandArray = ["canary", "hawaiian", "faroe", "solomon", "cayman"]
+        console.log(addIsland(islandArray)) // canary islands, hawaiian islands, faroe islands, solomon islands, cayman islands
+
+        console.log("Problem 5-------------")
+        /*create a function that adds all the elements
+        of the array to create 1 large string. then returns it*/
+        const stringTogether = (arr) => {
+            let sum = ""
+            arr.forEach((ele, i) => { sum += ele })
+            return sum
+        }
+        var strArray = ["super", "cali", "fragil", "istic", "expi", "ali", "docious"]
+        console.log(stringTogether(strArray)) // supercalifragilisticexpialidocious
+
+        console.log("Problem 6-------------")
+        //create a function that prints each letter of a string into the console
+        //strings can be treated just like arrays
+        //if word="elephant", word[0] is e, word[1] is l, word[word.length-1] is t
+        const eachLetter = (str) => {
+            str.split("").forEach((ele, i) => { console.log(ele) })
+        }
+        eachLetter("bronxville")
+
+        console.log("Problem 7-------------")
+        //create a function that returns how many e's a word has
+        const howManyE = (str) => {
+            let total = 0
+            str.split("").forEach((ele, i) => { total += (ele == 'e') })
+            return total
+        }
+        console.log(howManyE("elephant")) //returns 2
+        console.log(howManyE("kleenex")) //returns 3
+        console.log(howManyE("saturn")) //returns 0
+
+        console.log("Problem 8-------------")
+        //given an array of test scores, return the average score
+        const findAverage = (arr) => {
+            let total = 0
+            arr.forEach((ele, i) => { total += ele })
+            return total / arr.length
+        }
+        var grades=[90, 80, 70, 99, 87, 97, 68, 75, 82]
+        console.log(findAverage(grades)) //83.11
+
+        console.log("Problem 9-------------")
+        //given an array of test scores, return the lowest score
+        const findMin = (arr) => {
+            let min = Number.MAX_VALUE
+            arr.forEach((ele, i) => {
+                if (ele < min)
+                    min = ele
+            })
+            return min
+        }
+        console.log(findMin(grades))
+
+        console.log("Problem 10-------------")
+        /*create a function that will swap two cereals
+        of your choosen element locations*/
+        const swap = (arr, i, j) => {
+            let t = arr[i]
+            arr[i] = arr[j]
+            arr[j] = t
+            return arr
+        }
+        console.log(swap(cerealArray,0,2)) // fruit loops, corn flakes, cheerios, chex
+        console.log(swap(cerealArray,2,3)) // fruit loops, corn flakes, chex, cheerios
+    </script>
+  </body>
+</html>
